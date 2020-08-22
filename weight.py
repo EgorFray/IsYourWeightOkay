@@ -29,10 +29,25 @@ def check_weight():
     return parser.weight / parser.height ** 2
 
 
+def advice():
+    answear = create_logger()
+    answear.info('Do you want some advice?')
+    advice = input()
+    if advice == 'yes':
+        explit_advice()
+    elif advice == 'no':
+        answear.info('''that's all''')
+    else:
+        answear.warning('You can use only yes/no')
+
+
+def explit_advice():
+    pass
+    
+
 def comparator():
     answear = create_logger()
     answear.info('Start programm...')
-    parser = start_parsing()
     kefi = check_weight()
     if kefi < 18.5:
         answear.info('Low weight')
@@ -44,14 +59,7 @@ def comparator():
         answear.info('How can you move?')
     elif 35.9 < kefi:
         answear.info('OMG')
-    answear.info('Do you want some advice?')
-    advice = input()
-    if advice == 'yes':
-        answear.info('okay')
-    elif advice == 'no':
-        answear.info('''that's all''')
-    else:
-        answear.warning('You can use only yes/no')
+    advice()
 
 
 if __name__ == '__main__':
