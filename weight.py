@@ -29,20 +29,29 @@ def check_weight():
     return parser.weight / parser.height ** 2
 
 
-def advice():
+def advice(answer):
     answear = create_logger()
     answear.info('Do you want some advice?')
     advice = input()
     if advice == 'yes':
-        explit_advice()
+        explit_advice(answer)
     elif advice == 'no':
         answear.info('''that's all''')
     else:
         answear.warning('You can use only yes/no')
 
 
-def explit_advice():
-    pass
+def explit_advice(answer):
+    if answer == 'Low weight':
+        print('You just need to eat more!')
+    elif answer == 'Everything is fine!':
+        print('You are in fine condition! Eat healthy food and do workouts to keep yourself feet!')
+    elif answer == 'Dangerous!':
+        print('You should do more exercises and try not to eat bad food')
+    elif answer == 'How can you move?':
+        print('Stop eating! DO EXERCISES!')
+    elif answer == 'OMG':
+        print('If you do not stop eating bad food you will die. You must do some workout and avoid fast and bad food.')
     
 
 def comparator():
@@ -50,16 +59,17 @@ def comparator():
     answear.info('Start programm...')
     kefi = check_weight()
     if kefi < 18.5:
-        answear.info('Low weight')
+        answer = 'Low weight'
     elif 18.5 < kefi < 24.9:
-        answear.info('Everything is fine!')
+        answer = 'Everything is fine!'
     elif 25.0 < kefi < 29.9:
-        answear.info('Dangerous!')
+        answer = 'Dangerous!'
     elif 29.9 < kefi < 34.9:
-        answear.info('How can you move?')
+        answer = 'How can you move?'
     elif 35.9 < kefi:
-        answear.info('OMG')
-    advice()
+        answer = 'OMG'
+    print(answer)
+    advice(answer)
 
 
 if __name__ == '__main__':
